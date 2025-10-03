@@ -1,0 +1,38 @@
+:root {
+  --text-color: #e6e6e6;
+  --bg-color: #161616;
+  --accent-color: #0066cc;
+}
+html,
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica,
+    arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  min-height: 100%;
+}
+body.login {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+main.login {
+  border: solid 1px var(--accent-color);
+  text-align: center;
+  width: 20rem;
+}
+
+#submit {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+#submit:hover {
+  cursor: pointer;
+  color: var(--bg-color);
+  font-size: 35px;
+}
