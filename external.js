@@ -8,6 +8,12 @@ if (current_page == "login.html") {
     event.preventDefault();
     let input_username = document.getElementById("username").value;
     let input_password = document.getElementById("password").value;
+    
+    if (input_username == "" || input_password == "") {
+      document.getElementById("login_feedback").innerHTML =
+        "Username and/or password is empty!";
+      return;
+    }
 
     fetch("https://dummyjson.com/user/login", {
       method: "POST",
@@ -23,20 +29,20 @@ if (current_page == "login.html") {
         response = data;
         localStorage.setItem("response", JSON.stringify(response));
 
-        if (
-          response.message == "Invalid credentials" ||
-          input_username == "" ||
-          input_password == ""
-        ) {
+        if (response.message == "Invalid credentials") {
           document.getElementById("login_feedback").innerHTML =
             "Username or password is invalid!";
         } else {
           document.getElementById("login_feedback").innerHTML = "Success!";
-          window.location.href = 'shop.html'; 
+          window.setTimeout(() => {
+            window.location.href = "recipes.html";
+          }, 1000);
         }
       })
       .then(() => {
         console.log();
       });
   });
+} else {
+    
 }
