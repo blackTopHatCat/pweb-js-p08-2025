@@ -67,6 +67,7 @@ if (current_page == "login.html") {
 
   const logout = document.getElementById("logout");
   logout.addEventListener("click", (event) => {
+    event.preventDefault();
     localStorage.clear();
     window.location.href = "login.html";
   });
