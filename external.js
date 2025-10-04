@@ -62,23 +62,23 @@ if (current_page == "login.html") {
     .then((data) => {
  */
 
-      const user = localStorage.getItem("response");
+      const user = setTimeout(() => localStorage.getItem("response"), 500);
       // if (user == null) {
       //       localStorage.clear();
       //       window.location.href = "login.html";
-      // } else {
-      //   document.getElementById("username").innerHTML = `${user.username}`;      
       // }
       fetch(`https://dummyjson.com/users/search?q=${user.username}`)
         .then((res) => res.json())
         .then((data) => {
           const user_found = Object.keys(data.users).length;
           localStorage.setItem("user_found", user_found);
-          console.log(data);
         })
         .then(() => {
+          document.getElementById("username").innerHTML = `${user.username}`; 
           const user = JSON.parse(localStorage.getItem("response"));
           const user_found = JSON.parse(localStorage.getItem("user_found"));
+          console.log(user);
+          console.log(user_found);
           // if (user_found !== 1) {
           //   window.location.href = "login.html";
           // }
