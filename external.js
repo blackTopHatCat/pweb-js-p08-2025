@@ -62,11 +62,10 @@ if (current_page == "login.html") {
     .then((data) => {
  */
       const user = localStorage.getItem("response");
-      if (user.username == null) {
+      if (user == null) {
             localStorage.clear();
             window.location.href = "login.html";
       }
-      console.log(user.username);
       fetch(`https://dummyjson.com/users/search?q=${user.username}`)
         .then((res) => res.json())
         .then((data) => {
