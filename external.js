@@ -8,7 +8,7 @@ if (current_page == "login.html") {
     event.preventDefault();
     let input_username = document.getElementById("username").value;
     let input_password = document.getElementById("password").value;
-    
+
     if (input_username == "" || input_password == "") {
       document.getElementById("login_feedback").innerHTML =
         "Username and/or password is empty!";
@@ -43,43 +43,40 @@ if (current_page == "login.html") {
         console.log();
       });
   });
-  
-// For recipes.html
+
+  // For recipes.html
 } else {
-    /* TODO (instaboy): remove this debug on final commit bc localStorage 
-     *                  keeps reseting after login during local testing.
-     */
-    fetch("https://dummyjson.com/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: "emilys",
-        password: "emilyspass",
-        expiresInMins: 30, // optional, defaults to 60
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const user = data;
-        localStorage.setItem("response", JSON.stringify(user));
-      })
-      .then(() => {
-        console.log();
-      });
-      
-    const user = JSON.parse(localStorage.getItem("response"));
-    console.log(user);
-     fetch(`https://dummyjson.com/users/search?q=${user.username}`)
-      .then(res => res.json())
-      .then((data) => {
-        const nuser = Object.keys(data.users).length;
-        localStorage.setItem("nuser", nuser);
-      });
-    const nuser = localStorage.getItem("nuser");
-      
-    console.log(nuser);
-    if(user == null || nuser !== 1) {
-      localStorage.clear();
+  /* TODO (instaboy): remove this debug on final commit bc localStorage
+   *                  keeps reseting after login during local testing.
+   */
+/*  fetch("https://dummyjson.com/user/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: "emilys",
+      password: "emilyspass",
+      expiresInMins: 30, // optional, defaults to 60
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+ */
+      const user = localStorage.getItem("response");
+      console.log(user.username);
+      fetch(`https://dummyjson.com/users/search?q=${user.username}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const user_found = Object.keys(data.users).length;
+          localStorage.setItem("user_found", user_found);
+          console.log(data);
+        })
+        .then(() => {
+          const user = JSON.parse(localStorage.getItem("response"));
+          const user_found = JSON.parse(localStorage.getItem("user_found"));
+          if (user == null || user_found !== 1) {
+            localStorage.clear();
             window.location.href = "login.html";
-    }
+          }
+        });
+    // });
 }
