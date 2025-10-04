@@ -44,11 +44,12 @@ if (current_page == "login.html") {
   // For recipes.html
 } else {
   const user = JSON.parse(localStorage.getItem("response")); 
-  document.getElementById("username").innerHTML = `${user.username}`;
   if (user == null) {
         localStorage.clear();
         window.location.href = "login.html";
   }
+  document.getElementById("username").innerHTML = `${user.username}`;
+
   fetch(`https://dummyjson.com/users/search?q=${user.username}`)
     .then((res) => res.json())
     .then((data) => {
