@@ -79,9 +79,9 @@ if (current_page == "login.html") {
         .then(() => {
           const user = JSON.parse(localStorage.getItem("response"));
           const user_found = JSON.parse(localStorage.getItem("user_found"));
-          if (user_found !== 1) {
-            window.location.href = "login.html";
-          }
+          // if (user_found !== 1) {
+          //   window.location.href = "login.html";
+          // }
         });
       
     // });
