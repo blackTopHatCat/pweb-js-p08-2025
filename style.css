@@ -2,6 +2,12 @@
   --text-color: #e6e6e6;
   --bg-color: #161616;
   --accent-color: #0066cc;
+
+  --xs: 4px;
+  --s: 8px;
+  --m: 16px;
+  --l: 24px;
+  --xl: 32px;
 }
 html,
 body {
@@ -14,6 +20,8 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+/* login.html */
 body.login {
   align-items: center;
   display: flex;
@@ -34,5 +42,44 @@ main.login {
 #submit:hover {
   cursor: pointer;
   color: var(--bg-color);
-  font-size: 35px;
+  font-size: var(--xl);
+}
+
+/*  recipe.html */
+.header {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  padding: var(--l) 0;
+}
+
+.navigation {
+  background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 0 var(--xl);
+}
+.username {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+#logout {
+  background-color: var(--bg-color);
+  font-size: var(--m);
+  font-weight: bolder;
+  color: var(--text-color);
+  padding: var(--xs) var(--m);
+  border: 0;
+  border-radius: var(--s);
+}
+#logout:hover {
+  cursor: pointer;
+  background-color: red;
 }
