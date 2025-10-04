@@ -62,7 +62,8 @@ if (current_page == "login.html") {
     .then((data) => {
  */
 
-      const user = localStorage.getItem("response");
+      let user = localStorage.getItem("response");
+      document.getElementById("username").innerHTML = `${user.username}`; 
       // if (user == null) {
       //       localStorage.clear();
       //       window.location.href = "login.html";
@@ -74,7 +75,6 @@ if (current_page == "login.html") {
           localStorage.setItem("user_found", user_found);
         })
         .then(() => {
-          document.getElementById("username").innerHTML = `${user.username}`; 
           const user = JSON.parse(localStorage.getItem("response"));
           const user_found = JSON.parse(localStorage.getItem("user_found"));
           console.log(user);
