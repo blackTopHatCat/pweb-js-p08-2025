@@ -62,7 +62,7 @@ if (current_page == "login.html") {
     .then((data) => {
  */
       const user = localStorage.getItem("response");
-      if (user == null) {
+      if (user.username == null) {
             localStorage.clear();
             window.location.href = "login.html";
       }
