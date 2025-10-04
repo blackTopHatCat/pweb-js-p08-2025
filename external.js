@@ -44,7 +44,6 @@ if (current_page == "login.html") {
   // For recipes.html
 } else {
   const user = JSON.parse(localStorage.getItem("response")); 
-  console.log(user);
   if (user == null) {
         localStorage.clear();
         window.location.href = "login.html";
