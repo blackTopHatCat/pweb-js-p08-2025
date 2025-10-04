@@ -62,7 +62,7 @@ if (current_page == "login.html") {
     .then((data) => {
  */
 
-      const user = setTimeout(() => localStorage.getItem("response"), 500);
+      const user = localStorage.getItem("response");
       // if (user == null) {
       //       localStorage.clear();
       //       window.location.href = "login.html";
