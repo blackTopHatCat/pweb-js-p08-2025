@@ -43,7 +43,7 @@ if (current_page == "login.html") {
 
   // For recipes.html
 } else {
-  let user = localStorage.getItem("response");
+  const user = JSON.parse(localStorage.getItem("response")); 
   document.getElementById("username").innerHTML = `${user.username}`;
   // if (user == null) {
   //       localStorage.clear();
