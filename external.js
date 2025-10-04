@@ -46,54 +46,33 @@ if (current_page == "login.html") {
 
   // For recipes.html
 } else {
-  /* TODO (instaboy): remove this debug on final commit bc localStorage
-   *                  keeps reseting after login during local testing.
-   */
-/*  fetch("https://dummyjson.com/user/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: "emilys",
-      password: "emilyspass",
-      expiresInMins: 30, // optional, defaults to 60
-    }),
-  })
+  let user = localStorage.getItem("response");
+  document.getElementById("username").innerHTML = `${user.username}`;
+  // if (user == null) {
+  //       localStorage.clear();
+  //       window.location.href = "login.html";
+  // }
+  fetch(`https://dummyjson.com/users/search?q=${user.username}`)
     .then((res) => res.json())
     .then((data) => {
- */
-
-      let user = localStorage.getItem("response");
-      document.getElementById("username").innerHTML = `${user.username}`; 
-      // if (user == null) {
-      //       localStorage.clear();
-      //       window.location.href = "login.html";
+      const user_found = Object.keys(data.users).length;
+      localStorage.setItem("user_found", user_found);
+    })
+    .then(() => {
+      const user = JSON.parse(localStorage.getItem("response"));
+      const user_found = JSON.parse(localStorage.getItem("user_found"));
+      console.log(user);
+      console.log(user_found);
+      // if (user_found !== 1) {
+      //   window.location.href = "login.html";
       // }
-      fetch(`https://dummyjson.com/users/search?q=${user.username}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const user_found = Object.keys(data.users).length;
-          localStorage.setItem("user_found", user_found);
-        })
-        .then(() => {
-          const user = JSON.parse(localStorage.getItem("response"));
-          const user_found = JSON.parse(localStorage.getItem("user_found"));
-          console.log(user);
-          console.log(user_found);
-          // if (user_found !== 1) {
-          //   window.location.href = "login.html";
-          // }
-        });
-      
-    // });
-    
+    });
+
   const logout = document.getElementById("logout");
-  logout .addEventListener("click", (event) => {
-              localStorage.clear();
-            window.location.href = "login.html";
+  logout.addEventListener("click", (event) => {
+    localStorage.clear();
+    window.location.href = "login.html";
   });
-  
-  
-    
-        
-    /* ------------------------------------------------------------------- */
+
+  /* ------------------------------------------------------------------- */
 }
