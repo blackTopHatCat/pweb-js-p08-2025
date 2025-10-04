@@ -1,4 +1,3 @@
-let response;
 let current_page = window.location.href.replace(/^.*[\\\/]/, "");
 
 // For login.html
@@ -27,10 +26,10 @@ if (current_page == "login.html") {
     })
       .then((res) => res.json())
       .then((data) => {
-        response = data;
-        localStorage.setItem("response", JSON.stringify(response));
+        const user = data;
+        localStorage.setItem("response", JSON.stringify(user));
 
-        if (response.message == "Invalid credentials") {
+        if (user.message == "Invalid credentials") {
           document.getElementById("login_feedback").innerHTML =
             "Username or password is invalid!";
         } else {
@@ -61,24 +60,26 @@ if (current_page == "login.html") {
     })
       .then((res) => res.json())
       .then((data) => {
-        response = data;
-        localStorage.setItem("response", JSON.stringify(response));
+        const user = data;
+        localStorage.setItem("response", JSON.stringify(user));
       })
       .then(() => {
         console.log();
       });
       
-    /* providing access token in bearer */
-fetch('https://dummyjson.com/user/me', {
-  method: 'GET',
-  headers: {
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3NTk1NDk5NjIsImV4cCI6MTc1OTU1MTc2Mn0.BTsdWAt_6yD5JC0oqx5KnymJtJeF4_yyvU-aYy9T6ms', // Pass JWT via Authorization header
-  },
-  credentials: 'include' // Include cookies (e.g., accessToken) in the request
-})
-.then(res => res.json())
-.then(console.log);
-
-      
     const user = JSON.parse(localStorage.getItem("response"));
+    console.log(user);
+     fetch(`https://dummyjson.com/users/search?q=${user.username}`)
+      .then(res => res.json())
+      .then((data) => {
+        const nuser = Object.keys(data.users).length;
+        localStorage.setItem("nuser", nuser);
+      });
+    const nuser = localStorage.getItem("nuser");
+      
+    console.log(nuser);
+    if(user == null || nuser !== 1) {
+      localStorage.clear();
+            window.location.href = "login.html";
+    }
 }
