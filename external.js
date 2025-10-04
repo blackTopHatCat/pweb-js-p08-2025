@@ -63,12 +63,12 @@ if (current_page == "login.html") {
  */
 
       const user = localStorage.getItem("response");
-      if (user == null) {
-            localStorage.clear();
-            window.location.href = "login.html";
-      } else {
-        document.getElementById("username").innerHTML = `${user.username}`;      
-      }
+      // if (user == null) {
+      //       localStorage.clear();
+      //       window.location.href = "login.html";
+      // } else {
+      //   document.getElementById("username").innerHTML = `${user.username}`;      
+      // }
       fetch(`https://dummyjson.com/users/search?q=${user.username}`)
         .then((res) => res.json())
         .then((data) => {
@@ -80,7 +80,6 @@ if (current_page == "login.html") {
           const user = JSON.parse(localStorage.getItem("response"));
           const user_found = JSON.parse(localStorage.getItem("user_found"));
           if (user == null || user_found !== 1) {
-            localStorage.clear();
             window.location.href = "login.html";
           }
         });
