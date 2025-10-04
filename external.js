@@ -39,9 +39,6 @@ if (current_page == "login.html") {
           }, 1000);
         }
       })
-      .then(() => {
-        console.log();
-      });
   });
 
   // For recipes.html
