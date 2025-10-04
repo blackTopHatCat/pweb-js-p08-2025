@@ -6,8 +6,8 @@ if (current_page == "login.html") {
   form.addEventListener("click", (event) => {
     document.getElementById("login_feedback").innerHTML = "Sending..";
     event.preventDefault();
-    let input_username = document.getElementById("username").value;
-    let input_password = document.getElementById("password").value;
+    let input_username = document.getElementById("username_input").value;
+    let input_password = document.getElementById("password_input").value;
 
     if (input_username == "" || input_password == "") {
       document.getElementById("login_feedback").innerHTML =
@@ -61,10 +61,13 @@ if (current_page == "login.html") {
     .then((res) => res.json())
     .then((data) => {
  */
+
       const user = localStorage.getItem("response");
       if (user == null) {
             localStorage.clear();
             window.location.href = "login.html";
+      } else {
+        document.getElementById("username").innerHTML = `${user.username}`;      
       }
       fetch(`https://dummyjson.com/users/search?q=${user.username}`)
         .then((res) => res.json())
@@ -81,7 +84,16 @@ if (current_page == "login.html") {
             window.location.href = "login.html";
           }
         });
+      
     // });
+    
+  const logout = document.getElementById("logout");
+  logout .addEventListener("click", (event) => {
+              localStorage.clear();
+            window.location.href = "login.html";
+  });
+  
+  
     
         
     /* ------------------------------------------------------------------- */

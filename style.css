@@ -66,7 +66,7 @@ main.login {
   top: 0;
   padding: 0 var(--xl);
 }
-.username {
+#username {
   font-weight: bolder;
   text-decoration: underline;
 }
@@ -75,7 +75,7 @@ main.login {
   font-size: var(--m);
   font-weight: bolder;
   color: var(--text-color);
-  padding: var(--xs) var(--m);
+  padding: var(--s) var(--m);
   border: 0;
   border-radius: var(--s);
 }
