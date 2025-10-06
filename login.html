@@ -6,12 +6,24 @@
     <title>Login :3</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="login">
+  <body class="login-page">
     <main class="login">
-  <h1>LOGIN</h1>
-  <input type="text" id="username_input" placeholder="username" pattern="[^\s]+" required />
-  <input type="password" id="password_input" placeholder="password" required />
+  <h1>Login</h1>
+
+  <div class="login-field">
+    <label for="username_input">Username</label>
+    <input type="text" id="username_input" placeholder="Masukkan username" required />
+  </div>
+
+  <div class="login-field">
+    <label for="password_input">Password</label>
+    <input type="password" id="password_input" placeholder="Masukkan password" required />
+  </div>
+
+  <button id="submit_btn">LOGIN</button>
   <p id="login_feedback">Welcome Consoomer!</p>
+</main>
+
     <script src="external.js" defer></script>
   </body>
 </html>
