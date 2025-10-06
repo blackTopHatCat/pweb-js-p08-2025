@@ -1,85 +1,195 @@
-:root {
-  --text-color: #e6e6e6;
-  --bg-color: #161616;
-  --accent-color: #0066cc;
-
-  --xs: 4px;
-  --s: 8px;
-  --m: 16px;
-  --l: 24px;
-  --xl: 32px;
-}
-html,
-body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
-    helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica,
-    arial, sans-serif;
-  height: 100%;
+/* 🌈 RESET DASAR */
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
   margin: 0;
-  min-height: 100%;
+  padding: 0;
 }
 
-/* login.html */
-body.login {
-  align-items: center;
+/* Semua halaman */
+body {
+  background: linear-gradient(135deg, #20232a, #2e2f38);
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+
+/* ===============================
+   LOGIN PAGE
+   =============================== */
+body.login-page {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 main.login {
-  border: solid 1px var(--accent-color);
-  text-align: center;
-  width: 20rem;
-}
-
-#submit {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-}
-
-#submit:hover {
-  cursor: pointer;
-  color: var(--bg-color);
-  font-size: var(--xl);
-}
-
-/*  recipe.html */
-.header {
-  height: 30%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  width: min(400px, 90%);
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  background-color: white;
-  color: black;
-  padding: var(--l) 0;
+  gap: 16px;
+  animation: fadeIn 0.6s ease-out;
 }
 
-.navigation {
-  background-color: var(--accent-color);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main.login h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.login-field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  padding: 0 var(--xl);
+  flex-direction: column;
+  gap: 6px;
 }
-#username {
-  font-weight: bolder;
-  text-decoration: underline;
+
+main.login label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ddd;
+  margin-bottom: 4px;
 }
-#logout {
-  background-color: var(--bg-color);
-  font-size: var(--m);
-  font-weight: bolder;
-  color: var(--text-color);
-  padding: var(--s) var(--m);
-  border: 0;
-  border-radius: var(--s);
+
+main.login input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background: #2d2f35;
+  color: #eee;
+  transition: all 0.2s ease;
 }
-#logout:hover {
+
+main.login input:focus {
+  border-color: #66b3ff;
+  box-shadow: 0 0 0 2px rgba(102, 179, 255, 0.3);
+}
+
+main.login button#submit_btn {
+  margin-top: 10px;
+  background: #66b3ff;
+  color: #111;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
   cursor: pointer;
-  background-color: red;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+main.login button#submit_btn:hover {
+  background: #479cf7;
+  transform: scale(1.03);
+}
+
+main.login #login_feedback {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: #ffb347;
+}
+
+/* ===============================
+   NAVBAR (RECIPES PAGE)
+   =============================== */
+nav.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1b1b1f;
+  color: #fff;
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav.navigation h2 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+nav.navigation button#logout {
+  background: #ff5757;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+nav.navigation button#logout:hover {
+  background: #e64343;
+}
+
+/* ===============================
+   DASHBOARD BANNER (RECIPES PAGE)
+   =============================== */
+.dashboard-banner {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-bottom: 3px solid #333;
+}
+
+.dashboard-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(65%);
+}
+
+.dashboard-banner .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.dashboard-banner h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.dashboard-banner p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* ===============================
+   RESPONSIVE (LOGIN & BANNER)
+   =============================== */
+@media (max-width: 500px) {
+  main.login {
+    padding: 30px;
+  }
+
+  main.login h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-banner h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-banner p {
+    font-size: 0.9rem;
+  }
 }
