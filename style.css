@@ -193,3 +193,78 @@ nav.navigation button#logout:hover {
     font-size: 0.9rem;
   }
 }
+
+
+/* ===============================
+   BUTTON / SELECT HOVER & FOCUS
+   =============================== */
+:root {
+  --accent-color: #91969a;
+  --accent-hover: #8c8d8f;
+  --danger-color: #ff5757;
+  --danger-hover: #e64343;
+  --card-btn-color: #111;
+}
+
+/* common transition for interactive elements */
+.card-actions button,
+#show_more,
+#clear_filters,
+#cuisine_filter {
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+/* View Full Recipe button inside card */
+.card-actions button:hover,
+.card-actions button:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  opacity: 0.98;
+  outline: none;
+}
+
+/* Show More button */
+#show_more {
+  background: var(--accent-color);
+  color: var(--card-btn-color);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#show_more:hover,
+#show_more:focus {
+  background: var(--accent-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+
+/* Clear button */
+#clear_filters {
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #444;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#clear_filters:hover,
+#clear_filters:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-color);
+  color: #cfc6c6;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Cuisine select hover/focus */
+#cuisine_filter:hover,
+#cuisine_filter:focus {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
