@@ -195,9 +195,6 @@ nav.navigation button#logout:hover {
 }
 
 
-/* ===============================
-   BUTTON / SELECT HOVER & FOCUS
-   =============================== */
 :root {
   --accent-color: #91969a;
   --accent-hover: #8c8d8f;
@@ -206,7 +203,6 @@ nav.navigation button#logout:hover {
   --card-btn-color: #111;
 }
 
-/* common transition for interactive elements */
 .card-actions button,
 #show_more,
 #clear_filters,
@@ -214,7 +210,6 @@ nav.navigation button#logout:hover {
   transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
 }
 
-/* View Full Recipe button inside card */
 .card-actions button:hover,
 .card-actions button:focus {
   transform: translateY(-3px);
@@ -223,7 +218,6 @@ nav.navigation button#logout:hover {
   outline: none;
 }
 
-/* Show More button */
 #show_more {
   background: var(--accent-color);
   color: var(--card-btn-color);
@@ -241,7 +235,6 @@ nav.navigation button#logout:hover {
   outline: none;
 }
 
-/* Clear button */
 #clear_filters {
   background: transparent;
   color: #ddd;
@@ -260,7 +253,6 @@ nav.navigation button#logout:hover {
   outline: none;
 }
 
-/* Cuisine select hover/focus */
 #cuisine_filter:hover,
 #cuisine_filter:focus {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
